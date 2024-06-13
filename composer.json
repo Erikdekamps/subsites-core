@@ -97,7 +97,6 @@
         "drupal/youtube": "^2.0",
         "drush/drush": "^12.4",
         "jfeltkamp/cookiesjsr": "^1.0",
-        "kanopi/gin-admin-experience": "^1.0@beta",
         "lucianocosta/jquery.mtz.monthpicker": "^1.0"
     }
 }
