@@ -63,7 +63,7 @@ install:
   - filter_empty_tags
   - flood_control
   - focal_point
-  - gin_toolbar
+#  - gin_toolbar
   - history
   - image
   - imagemagick
