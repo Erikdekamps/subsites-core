@@ -8,11 +8,9 @@ is_admin: false
 permissions:
   - 'access administration pages'
   - 'access block library'
-  - 'access coffee'
   - 'access content overview'
   - 'access contextual links'
   - 'access media overview'
-  - 'access navigation'
   - 'access site in maintenance mode'
   - 'access toolbar'
   - 'administer redirects'
