@@ -1,0 +1,238 @@
+name: Subsites
+description: Applies all the Subsites recipes.
+type: Site
+recipes:
+  - core/recipes/basic_block_type
+  - core/recipes/content_search
+  - core/recipes/core_recommended_performance
+  - core/recipes/core_recommended_maintenance
+  - core/recipes/core_recommended_front_end_theme
+  - core/recipes/user_picture
+  - core/recipes/basic_shortcuts
+  # Provides a fallback text format which is available to all users.
+  - core/recipes/restricted_html_format
+  # Not in Standard...
+  - core/recipes/remote_video_media_type
+  - subsites_admin_theme
+install:
+  - metatag
+  - menu_link_content
+  - project_browser
+  - redirect
+  - uli_custom_workflow
+  - admin_toolbar
+  - admin_toolbar_links_access_filter
+  - admin_toolbar_tools
+  - advagg
+  - allowed_formats
+  - automated_cron
+  - better_exposed_filters
+  - block
+  - block_content
+  - block_field
+  - breakpoint
+  - captcha
+  - checklistapi
+  - ckeditor5
+  - ckeditor5_paste_filter
+  - coi
+  - comment
+  - config_ignore
+  - config_override_core_fields
+  - config_split
+  - config_translation
+  - cookies
+  - crop
+  - ctools
+  - custom_breadcrumbs
+  - datetime
+  - dblog
+  - dynamic_page_cache
+  - editor
+  - editor_advanced_link
+  - entity_reference_exposed_filters
+  - entity_reference_revisions
+  - field
+  - field_group
+  - field_layout
+  - field_token_value
+  - field_ui
+  - file
+  - file_mdm
+  - filter
+  - filter_empty_tags
+  - flood_control
+  - focal_point
+  - gin_toolbar
+  - history
+  - image
+  - imagemagick
+  - jquery_ui
+  - jquery_ui_datepicker
+  - jquery_ui_slider
+  - jquery_ui_touch_punch
+  - language
+  - layout_discovery
+  - layout_paragraphs
+  - lazy
+  - like_and_dislike
+  - link
+  - linkit
+  - locale
+  - manage_display
+  - matomo
+  - media
+  - media_library
+  - menu_link_attributes
+  - menu_link_content
+  - menu_manipulator
+  - menu_ui
+  - metatag
+  - metatag_open_graph
+  - metatag_twitter_cards
+  - mysql
+  - node
+  - options
+  - page_cache
+  - paragraph_gallery_install
+  - paragraph_inhoudsopgave_install
+  - paragraph_link_list_install
+  - path
+  - path_alias
+  - poll
+  - quick_node_clone
+  - rabbit_hole
+  - recaptcha
+  - recaptcha_v3
+  - redirect
+  - responsive_image
+  - search
+  - search_api
+  - search_api_solr
+  - search_api_solr_admin
+  - seo_checklist
+  - simple_menu_permissions
+  - sophron
+  - statistics
+  - structure_sync
+  - svg_image
+  - syslog
+  - system
+  - taxonomy
+  - taxonomy_access_fix
+  - telephone
+  - telephone_validation
+  - text
+  - time_field
+  - token
+  - toolbar
+  - twig_tweak
+  - ultimate_cron
+  - update
+  - upgrade_status
+  - user
+  - view_unpublished
+  - views_ui
+  - viewsreference
+  - votingapi
+  - webform
+  - webform_ui
+  - webp
+  - youtube
+  - extlink
+  - forum
+  - pathauto
+  - xmlsitemap
+  - views
+  - paragraphs
+  - publication_date
+  - linked_field
+  - comment_delete
+  - login_redirect_per_role
+  # The rest of these are in Standard.
+  - help
+  - history
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - menu_ui
+  - options
+  - shortcut
+  - toolbar
+  - field_ui
+  - views_ui
+config:
+  import:
+    help:
+      - search.page.help_search
+    image:
+      - image.style.large
+      - image.style.thumbnail
+    metatag: '*'
+    node:
+      - views.view.archive
+      - views.view.content
+      - views.view.content_recent
+      - views.view.frontpage
+      - views.view.glossary
+    olivero:
+      - block.block.olivero_help
+      - block.block.olivero_search_form_narrow
+      - block.block.olivero_search_form_wide
+      - block.block.olivero_syndicate
+    shortcut:
+      - shortcut.set.default
+    user:
+      - core.entity_view_mode.user.compact
+      - search.page.user_search
+      - views.view.user_admin_people
+      - views.view.who_s_new
+      - views.view.who_s_online
+  actions:
+    olivero.settings:
+      simple_config_update:
+        base_primary_color: '#0a205a'
+    project_browser.admin_settings:
+      simple_config_update:
+        enabled_sources:
+          - drupalorg_mockapi
+          - local_recipes
+    system.site:
+      simple_config_update:
+        name: 'Subsites'
+        page.front: '/node'
+    user.role.content_editor:
+      grantPermissionsForEachMediaType:
+        - 'create %bundle media'
+        - 'delete any %bundle media'
+        - 'edit any %bundle media'
+      grantPermissionsForEachNodeType:
+        - 'clone %bundle content'
+        - 'create %bundle content'
+        - 'delete %bundle revisions'
+        - 'delete any %bundle content'
+        - 'edit any %bundle content'
+    node.settings:
+      simple_config_update:
+        # @todo Remove `langcode` once https://drupal.org/i/3427564 lands.
+        langcode: en
+        use_admin_theme: true
+    user.role.authenticated:
+      grantPermissions:
+        - 'access help pages'
+        - 'access shortcuts'
+        - 'access user profiles'
+        - 'delete own files'
+        - 'use advanced search'
+        - 'view own unpublished content'
+    user.role.anonymous:
+      grantPermissions:
+        # We assume all published content should be accessible and searchable.
+        - 'access content'
+        - 'use advanced search'
+    user.settings:
+      simple_config_update:
+        verify_mail: true
+        register: admin_only
+        cancel_method: user_cancel_block
