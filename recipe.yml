@@ -20,9 +20,7 @@ install:
   - project_browser
   - redirect
   - uli_custom_workflow
-  - admin_toolbar
   - admin_toolbar_links_access_filter
-  - admin_toolbar_tools
   - advagg
   - allowed_formats
   - automated_cron
@@ -63,7 +61,6 @@ install:
   - filter_empty_tags
   - flood_control
   - focal_point
-#  - gin_toolbar
   - history
   - image
   - imagemagick
@@ -122,7 +119,6 @@ install:
   - text
   - time_field
   - token
-  - toolbar
   - twig_tweak
   - ultimate_cron
   - update
