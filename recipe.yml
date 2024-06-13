@@ -13,7 +13,6 @@ recipes:
   - core/recipes/restricted_html_format
   # Not in Standard...
   - core/recipes/remote_video_media_type
-  - gin-admin-experience
 install:
   - metatag
   - menu_link_content
