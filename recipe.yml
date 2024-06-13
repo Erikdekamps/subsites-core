@@ -6,6 +6,7 @@ recipes:
   - core/recipes/content_search
   - core/recipes/core_recommended_performance
   - core/recipes/core_recommended_maintenance
+  - core/recipes/core_recommended_admin_theme
   - core/recipes/core_recommended_front_end_theme
   - core/recipes/user_picture
   - core/recipes/basic_shortcuts
@@ -14,18 +15,10 @@ recipes:
   # Not in Standard...
   - core/recipes/remote_video_media_type
 install:
-  - metatag
-  - menu_link_content
-  - project_browser
-  - redirect
-  - uli_custom_workflow
   - admin_toolbar_links_access_filter
   - advagg
   - allowed_formats
-  - automated_cron
   - better_exposed_filters
-  - block
-  - block_content
   - block_field
   - breakpoint
   - captcha
@@ -34,36 +27,33 @@ install:
   - ckeditor5_paste_filter
   - coi
   - comment
+  - comment_delete
   - config_ignore
   - config_override_core_fields
   - config_split
   - config_translation
+  - contextual
   - cookies
   - crop
   - ctools
   - custom_breadcrumbs
   - datetime
-  - dblog
-  - dynamic_page_cache
   - editor
   - editor_advanced_link
   - entity_reference_exposed_filters
   - entity_reference_revisions
-  - field
+  - extlink
   - field_group
   - field_layout
   - field_token_value
   - field_ui
-  - file
   - file_mdm
-  - filter
   - filter_empty_tags
   - flood_control
   - focal_point
-  - gin
-  - gin_toolbar
+  - forum
+  - help
   - history
-  - image
   - imagemagick
   - jquery_ui
   - jquery_ui_datepicker
@@ -75,34 +65,38 @@ install:
   - lazy
   - like_and_dislike
   - link
+  - linked_field
   - linkit
   - locale
+  - login_redirect_per_role
   - manage_display
   - matomo
   - media
-  - media_library
   - menu_link_attributes
+  - menu_link_content
   - menu_link_content
   - menu_manipulator
   - menu_ui
   - metatag
+  - metatag
   - metatag_open_graph
   - metatag_twitter_cards
   - mysql
-  - navigation
-  - node
   - options
-  - page_cache
-  - path
+  - paragraphs
   - path_alias
+  - pathauto
   - poll
+  - project_browser
+  - project_browser
+  - publication_date
   - quick_node_clone
   - rabbit_hole
   - recaptcha
   - recaptcha_v3
   - redirect
+  - redirect
   - responsive_image
-  - search
   - search_api
   - search_api_solr
   - search_api_solr_admin
@@ -121,11 +115,12 @@ install:
   - text
   - time_field
   - token
+  - toolbar
   - twig_tweak
+  - uli_custom_workflow
   - ultimate_cron
   - update
   - upgrade_status
-  - user
   - view_unpublished
   - views_ui
   - viewsreference
@@ -133,53 +128,22 @@ install:
   - webform
   - webform_ui
   - webp
-  - youtube
-  - extlink
-  - forum
-  - pathauto
   - xmlsitemap
-  - views
-  - paragraphs
-  - publication_date
-  - linked_field
-  - comment_delete
-  - login_redirect_per_role
-  # The rest of these are in Standard.
-  - help
-  - history
-  - config
-  - contextual
-  - menu_link_content
-  - datetime
-  - menu_ui
-  - options
-  - shortcut
-  - toolbar
-  - field_ui
-  - views_ui
+  - youtube
 config:
   import:
-    gin: '*'
     help:
       - search.page.help_search
     image:
       - image.style.large
       - image.style.thumbnail
     metatag: '*'
-    navigation: '*'
     node:
       - views.view.archive
       - views.view.content
       - views.view.content_recent
       - views.view.frontpage
       - views.view.glossary
-    olivero:
-      - block.block.olivero_help
-      - block.block.olivero_search_form_narrow
-      - block.block.olivero_search_form_wide
-      - block.block.olivero_syndicate
-    shortcut:
-      - shortcut.set.default
     user:
       - core.entity_view_mode.user.compact
       - search.page.user_search
@@ -187,12 +151,6 @@ config:
       - views.view.who_s_new
       - views.view.who_s_online
   actions:
-    system.theme:
-      simple_config_update:
-        admin: gin
-    olivero.settings:
-      simple_config_update:
-        base_primary_color: '#0a205a'
     project_browser.admin_settings:
       simple_config_update:
         enabled_sources:
@@ -200,7 +158,7 @@ config:
           - local_recipes
     system.site:
       simple_config_update:
-        name: 'Subsites'
+        name: 'Starshot'
         page.front: '/node'
     user.role.content_editor:
       grantPermissionsForEachMediaType:
@@ -213,15 +171,12 @@ config:
         - 'delete %bundle revisions'
         - 'delete any %bundle content'
         - 'edit any %bundle content'
-    node.settings:
-      simple_config_update:
-        # @todo Remove `langcode` once https://drupal.org/i/3427564 lands.
-        langcode: en
-        use_admin_theme: true
+      grantPermissionsForEachTaxonomyVocabulary:
+        - 'create terms in %bundle'
+        - 'edit terms in %bundle'
     user.role.authenticated:
       grantPermissions:
         - 'access help pages'
-        - 'access shortcuts'
         - 'access user profiles'
         - 'delete own files'
         - 'use advanced search'
