@@ -94,9 +94,6 @@ install:
   - node
   - options
   - page_cache
-  - paragraph_gallery_install
-  - paragraph_inhoudsopgave_install
-  - paragraph_link_list_install
   - path
   - path_alias
   - poll
