@@ -41,7 +41,7 @@
         "drupal/filter_empty_tags": "^2.0",
         "drupal/flood_control": "^2.3",
         "drupal/focal_point": "^1.5 | ^2.0",
-        "drupal/gin": "^3.0@RC",
+        "drupal/gin": "3.x-dev",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^1.0@RC",
         "drupal/honeypot": "^2.1",
